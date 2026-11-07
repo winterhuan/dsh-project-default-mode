@@ -28,7 +28,7 @@ DSH resolves one global default agent mode (preset) for a new session. This opti
 Install the prebuilt release through the [plugin market](https://winterhuan.github.io/dsh-creative/index.json), or use this pinned Git source with DSH `0.2.2-rc.1`:
 
 ```sh
-dsh plugin --profile market add 'git+https://github.com/winterhuan/dsh-project-default-mode.git#44b6a3d3e6f8e4208fc50fc33de2e5d5b6ed9d1f&path:/packages/winterhuan/project-default-mode'
+dsh plugin --profile market add 'git+https://github.com/winterhuan/dsh-project-default-mode.git#bef5b410e20c221da201fc0923dd29dbae94f015&path:/packages/winterhuan/project-default-mode'
 ```
 
 Replace `market` with the name of your existing DSH profile.

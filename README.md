@@ -9,7 +9,7 @@ Per-project default agent preset for DSH sessions.
 For DSH `0.2.2-rc.1`, enable Custom plugin market and add `https://winterhuan.github.io/dsh-creative/index.json` in Discover. Alternatively, install the prebuilt Git version with pnpm 11.7.0:
 
 ```sh
-dsh plugin --profile market add 'git+https://github.com/winterhuan/dsh-project-default-mode.git#44b6a3d3e6f8e4208fc50fc33de2e5d5b6ed9d1f&path:/packages/winterhuan/project-default-mode'
+dsh plugin --profile market add 'git+https://github.com/winterhuan/dsh-project-default-mode.git#bef5b410e20c221da201fc0923dd29dbae94f015&path:/packages/winterhuan/project-default-mode'
 ```
 
 Replace `market` with the name of your existing DSH profile.
