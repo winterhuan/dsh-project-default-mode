@@ -1,7 +1,7 @@
 {
   "name": "@winterhuan/dsh-project-default-mode",
   "description": "Per-project default agent preset for DSH sessions",
-  "version": "0.1.1",
+  "version": "0.1.8",
   "publishConfig": {
     "access": "public"
   },
