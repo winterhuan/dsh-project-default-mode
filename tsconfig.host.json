@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "packages/winterhuan/project-default-mode/tsconfig.host.json"
+    }
+  ]
+}
