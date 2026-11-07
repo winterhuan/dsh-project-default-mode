@@ -25,6 +25,14 @@ DSH 只为新会话解析一个全局默认 Agent 模式（preset）。本可选
 <a id="use-this-package"></a>
 ## 使用本包
 
+通过[插件市场](https://winterhuan.github.io/dsh-creative/index.json)安装预构建版本，或在 DSH `0.2.2-rc.1` 中安装以下固定 Git 提交：
+
+```sh
+dsh plugin --profile market add 'git+https://github.com/winterhuan/dsh-project-default-mode.git#44b6a3d3e6f8e4208fc50fc33de2e5d5b6ed9d1f&path:/packages/winterhuan/project-default-mode'
+```
+
+将 `market` 替换为你已有的 DSH profile 名称。
+
 ### 安装到 profile
 
 先构建本仓库，再把本地 bundle 安装进已有的 DSH web profile。把 `project-default-mode` 换成你的 profile 名。

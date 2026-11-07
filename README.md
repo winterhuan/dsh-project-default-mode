@@ -4,9 +4,15 @@ English | [中文](README.zh.md)
 
 Per-project default agent preset for DSH sessions.
 
-[Plugin documentation](packages/winterhuan/project-default-mode/README.md) · [Release package](https://github.com/winterhuan/dsh-project-default-mode/releases/download/v0.1.0/winterhuan-dsh-project-default-mode-0.1.0.tgz)
+[Plugin documentation](packages/winterhuan/project-default-mode/README.md) · [Release package](https://github.com/winterhuan/dsh-project-default-mode/releases/download/v0.1.1/winterhuan-dsh-project-default-mode-0.1.1.tgz)
 
-Use pnpm 10.28.0 to install Release URLs into DSH profiles; pnpm 11 can reject them with `MISSING_TARBALL_INTEGRITY`. Repository builds use pnpm 11.7.0.
+For DSH `0.2.2-rc.1`, enable Custom plugin market and add `https://winterhuan.github.io/dsh-creative/index.json` in Discover. Alternatively, install the prebuilt Git version with pnpm 11.7.0:
+
+```sh
+dsh plugin --profile market add 'git+https://github.com/winterhuan/dsh-project-default-mode.git#44b6a3d3e6f8e4208fc50fc33de2e5d5b6ed9d1f&path:/packages/winterhuan/project-default-mode'
+```
+
+Replace `market` with the name of your existing DSH profile.
 
 Use Node 24 (default) or Node 22.19 and later, with pnpm 11.7.0.
 
