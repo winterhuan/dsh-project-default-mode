@@ -6,6 +6,8 @@ Per-project default agent preset for DSH sessions.
 
 [Plugin documentation](packages/winterhuan/project-default-mode/README.md) · [Release package](https://github.com/winterhuan/dsh-project-default-mode/releases/download/v0.1.0/winterhuan-dsh-project-default-mode-0.1.0.tgz)
 
+Use pnpm 10.28.0 to install Release URLs into DSH profiles; pnpm 11 can reject them with `MISSING_TARBALL_INTEGRITY`. Repository builds use pnpm 11.7.0.
+
 Use Node 24 (default) or Node 22.19 and later, with pnpm 11.7.0.
 
 ```sh
