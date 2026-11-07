@@ -1,7 +1,7 @@
 {
   "name": "@winterhuan/dsh-project-default-mode",
   "description": "Per-project default agent preset for DSH sessions",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publishConfig": {
     "access": "public"
   },
@@ -94,6 +94,8 @@
     "react": "^18.2.0"
   },
   "engines": {
-    "node": "^22.19.0 || >=24.0.0"
-  }
+    "node": "^22.19.0 || >=24.0.0",
+    "dsh": "0.2.2-rc.1"
+  },
+  "homepage": "https://github.com/winterhuan/dsh-project-default-mode#readme"
 }
