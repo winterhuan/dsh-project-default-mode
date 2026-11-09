@@ -27,7 +27,8 @@ import z from "@deepseek-ai/schemastery";
 * lands after `agent/created` settled and would silently undo the project
 * default before the first turn, so the Host also watches `agent-preset/selected`
 * events and re-asserts the rule on a blank session that falls back to the
-* global default.
+* global default. Reuse of an unloaded blank session publishes a resumed Agent;
+* its fallback is handled by `agent/created` once the Agent is available.
 *
 * This module owns no Remote namespace: rules are ordinary volatile Config the
 * browser half edits through the settings form, and the Host reads them at
@@ -58,7 +59,11 @@ const Config = z.object({ rules: z.array(z.object({
 */
 function apply(context, config) {
 	context.on("agent/created", ({ agent, source }) => {
-		if (source !== "startup") return;
+		if (source !== "startup" && source !== "resume") return;
+		if (source === "resume") {
+			const presets = context.get("agentPresets");
+			if (!isBlank(context, agent.session) || presets === void 0 || presets.composedPreset(agent.ctx) !== presets.defaultId) return;
+		}
 		if (!isRetargetable(context, agent.session)) return;
 		scheduleRetarget(context, config, agent);
 	});

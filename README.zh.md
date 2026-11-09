@@ -4,12 +4,12 @@
 
 为 DSH 项目设置新会话默认使用的 Agent 预设。
 
-[插件说明](packages/winterhuan/project-default-mode/README.zh.md) · [发布包](https://github.com/winterhuan/dsh-project-default-mode/releases/download/v0.1.8/winterhuan-dsh-project-default-mode-0.1.8.tgz)
+[插件说明](packages/winterhuan/project-default-mode/README.zh.md) · [发布包](https://github.com/winterhuan/dsh-project-default-mode/releases/download/v0.1.9/winterhuan-dsh-project-default-mode-0.1.9.tgz)
 
 在 DSH `0.2.2-rc.1` 中启用「自定义插件市场」，在「发现」添加 `https://winterhuan.github.io/dsh-creative/index.json`。也可用 pnpm 11.7.0 安装已构建的 Git 版本：
 
 ```sh
-dsh plugin --profile market add 'git+https://github.com/winterhuan/dsh-project-default-mode.git#bef5b410e20c221da201fc0923dd29dbae94f015&path:/packages/winterhuan/project-default-mode'
+dsh plugin --profile market add 'git+https://github.com/winterhuan/dsh-project-default-mode.git#v0.1.9&path:/packages/winterhuan/project-default-mode'
 ```
 
 将 `market` 替换为你已有的 DSH profile 名称。

@@ -121,9 +121,25 @@ describe('project default mode host', () => {
     expect(b.warnings).toEqual([])
   })
 
-  it.each(['resume', 'clear', 'compact'] as const)('never retargets a %s session', async (source) => {
+  it.each(['clear', 'compact'] as const)('never retargets a %s session', async (source) => {
     const b = await bench({ rules: [{ workspaceId: 'ws-novel', agentPreset: 'story' }], workspaces: WORKSPACES })
     await b.fire(stubAgent({ cwd: '/projects/novel' }), source)
+    expect(b.select).not.toHaveBeenCalled()
+  })
+
+  it.each([
+    { label: 'a started session', blank: false, composed: 'standard' },
+    { label: 'a blank session with a chosen mode', blank: true, composed: 'ptc' },
+  ])('preserves the mode when resuming $label', async ({ blank, composed }) => {
+    const agent = stubAgent({ cwd: '/projects/novel', headerPreset: 'standard' })
+    const b = await bench({
+      rules: [{ workspaceId: 'ws-novel', agentPreset: 'story' }],
+      workspaces: WORKSPACES,
+      composed,
+      live: agent,
+      blank,
+    })
+    await b.fire(agent, 'resume')
     expect(b.select).not.toHaveBeenCalled()
   })
 

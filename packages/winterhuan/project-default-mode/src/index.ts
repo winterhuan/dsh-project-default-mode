@@ -25,7 +25,8 @@
  * lands after `agent/created` settled and would silently undo the project
  * default before the first turn, so the Host also watches `agent-preset/selected`
  * events and re-asserts the rule on a blank session that falls back to the
- * global default.
+ * global default. Reuse of an unloaded blank session publishes a resumed Agent;
+ * its fallback is handled by `agent/created` once the Agent is available.
  *
  * This module owns no Remote namespace: rules are ordinary volatile Config the
  * browser half edits through the settings form, and the Host reads them at
@@ -80,11 +81,15 @@ export const Config = z.object({
  */
 export function apply(context: Context, config: Config): void {
   context.on('agent/created', ({ agent, source }) => {
-    // A fresh ordinary creation is the only creation retarget: resume and
-    // compaction reuse a composition the log already fixed, and a forked or
-    // subagent child (both published with source 'startup') inherits its
-    // parent's preset.
-    if (source !== 'startup') return
+    // Cold blank-session reuse selects the global default during setup, before
+    // the Agent is published. Its selection event cannot resolve a live Agent,
+    // so handle that fallback here when the resumed Agent becomes available.
+    if (source !== 'startup' && source !== 'resume') return
+    if (source === 'resume') {
+      const presets = context.get('agentPresets')
+      if (!isBlank(context, agent.session) || presets === undefined
+        || presets.composedPreset(agent.ctx) !== presets.defaultId) return
+    }
     if (!isRetargetable(context, agent.session)) return
     // `select` rebinds the Agent's scope and emits `tools/change`, which
     // preset-scoped plugins answer by installing and disposing Agent-scoped

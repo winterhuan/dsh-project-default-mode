@@ -25,7 +25,8 @@
  * lands after `agent/created` settled and would silently undo the project
  * default before the first turn, so the Host also watches `agent-preset/selected`
  * events and re-asserts the rule on a blank session that falls back to the
- * global default.
+ * global default. Reuse of an unloaded blank session publishes a resumed Agent;
+ * its fallback is handled by `agent/created` once the Agent is available.
  *
  * This module owns no Remote namespace: rules are ordinary volatile Config the
  * browser half edits through the settings form, and the Host reads them at

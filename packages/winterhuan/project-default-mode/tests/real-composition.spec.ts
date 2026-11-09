@@ -80,6 +80,27 @@ async function createSession(ctx: Context, id: string, cwd: string) {
 }
 
 describe('project default mode in a real composition', () => {
+  it('restores the project preset when an unloaded blank session is reused after restart', async (test) => {
+    const { ctx, directory } = await compose(test, [{ workspaceId: WORKSPACE, agentPreset: 'student' }])
+    const sessionId = SessionId('cold-blank')
+    const first = await ctx.agents.create({
+      sessionId, meta: { cwd: directory, agentPreset: 'standard' },
+      setup: async agentCtx => { await ctx.agentPresets.mount(agentCtx, 'standard') },
+    })
+    await vi.waitFor(() => { expect(ctx.agentPresets.composedPreset(first.agent.ctx)).toBe('student') })
+    await first.dispose()
+    expect(ctx.agents.get(sessionId)).toBeUndefined()
+    const resumed = await ctx.agents.resume({
+      resumeSessionId: sessionId,
+      setup: async (agentCtx, agent) => {
+        await ctx.agentPresets.mount(agentCtx, 'standard')
+        agent.session.append('agent-preset/selected', { agentPreset: 'standard' })
+      },
+    })
+    await vi.waitFor(() => { expect(ctx.agentPresets.composedPreset(resumed.agent.ctx)).toBe('student') })
+    expect(ctx.sessionProjections.stateOf(resumed.agent.session, 'agentPreset')).toBe('student')
+  })
+
   it('creates a session under a ruled workspace and composes the project preset', async (test) => {
     const { ctx, directory } = await compose(test, [{ workspaceId: WORKSPACE, agentPreset: 'student' }])
     const agent = await createSession(ctx, 'ruled', directory)

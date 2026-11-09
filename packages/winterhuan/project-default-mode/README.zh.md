@@ -28,7 +28,7 @@ DSH 只为新会话解析一个全局默认 Agent 模式（preset）。本可选
 通过[插件市场](https://winterhuan.github.io/dsh-creative/index.json)安装预构建版本，或在 DSH `0.2.2-rc.1` 中安装以下固定 Git 提交：
 
 ```sh
-dsh plugin --profile market add 'git+https://github.com/winterhuan/dsh-project-default-mode.git#bef5b410e20c221da201fc0923dd29dbae94f015&path:/packages/winterhuan/project-default-mode'
+dsh plugin --profile market add 'git+https://github.com/winterhuan/dsh-project-default-mode.git#v0.1.9&path:/packages/winterhuan/project-default-mode'
 ```
 
 将 `market` 替换为你已有的 DSH profile 名称。
@@ -65,6 +65,8 @@ dsh plugin --profile project-default-mode remove @winterhuan/dsh-project-default
 [bundle 补丁](cordis.patch.yml)只插入一行：`@winterhuan/dsh-project-default-mode` 的 `project-default-mode`。包内含 Host 半边和浏览器半边；浏览器半边通过包的 `dsh.client` 清单提供服务，不需要第二行补丁。
 
 Host 半边（[src/index.ts](src/index.ts)）声明 volatile 的 `rules` 配置——`{ workspaceId, agentPreset }` 列表——并监听 `agent/created`。对全新的普通创建（`source === 'startup'`、无 `parentSession`、非 subagent 子会话），它把会话 `cwd` 解析到 Workspace（`ctx.workspaceRegistry`），查找该 Workspace 的规则；当会话尚未组合规则指定的 preset 时，调用 `ctx.agentPresets.select(agent, preset)`。这与新建会话 hero chip 使用同一接缝，因此切换会追加 `agent-preset/selected` Session 事件并挂载日志随后记录的 preset 修订。`select` 只对已发布的 Agent 安全：它重绑作用域并触发 `tools/change`，而 `agent/created` 是串行派发、各 preset 作用域的监听器仍在按创建时的 preset 运行，所以切换推迟到派发结束之后、首个回合之前执行；所有失败只记录日志，不否决创建。可选服务通过 `ctx.get` 读取，插件在它们缺席时也能激活，只是在它们就绪前不做任何事。Host 还监听 `agent-preset/selected`：web 客户端复用存活空白会话时会向它选中全局默认，因此当这次回退落到已定规则的空白会话上时，插件会在首个回合前重新确认规则；已过首个回合、或创建时显式指名其他 preset 的会话不受影响。
+
+重启后复用未加载的空白会话会发布 `source === 'resume'` 的 `agent/created`。Host 仅在会话仍为空白且当前组合为全局默认时应用项目规则。恢复时已选择其他模式的会话保留该选择。
 
 浏览器半边注册一个 `sidebar.workspaces.session.menu.item` 行（order 500，位于内置 pin/rename/fork/archive 之后）和一个 `shell.overlay` 对话框，共享一个控制器（[src/client/controller.ts](src/client/controller.ts)）。打开时从 `ctx.workspaces` 解析该会话所属 Workspace，等设置表单取得首个已接受区段后暂存项目当前规则，再用 `ctx.remote.agentPresets.list()` 读取模式列表。保存通过 `ctx.configForms.get('project-default-mode').set('rules', …)` 整体写入 `rules` 字段：折叠保留其他项目的规则，表单没有已接受区段时拒绝写入（空镜像写回会丢掉其他项目的规则），设置表单携带命名空间 revision 栅栏并在拒绝后恢复镜像。两个界面都经 `configForms.whileServed` 注册，未安装 Host 半边的部署不显示任何痕迹。
 

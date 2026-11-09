@@ -194,8 +194,8 @@ window.__ModuleLoader__.load({
 			}];
 		}
 		//#endregion
-		//#region \0dsh-css:/Users/winter/dsh-plugins/dsh-project-default-mode/packages/winterhuan/project-default-mode/src/client/dialog.module.css.mjs
-		const css = ".Zvn6Za_hint{color:var(--dsw-alias-label-tertiary);font-size:var(--dsw-font-size-sm);margin:0 0 12px;line-height:1.5}.Zvn6Za_status{color:var(--dsw-alias-label-tertiary);font-size:var(--dsw-font-size-sm);margin:0}.Zvn6Za_options{border:none;flex-direction:column;gap:4px;margin:0;padding:0;display:flex}.Zvn6Za_option{border-radius:var(--dsw-radius-md);color:var(--dsw-alias-label-primary);font-size:var(--dsw-font-size-sm);cursor:pointer;align-items:center;gap:8px;padding:8px 10px;display:flex}.Zvn6Za_option:hover{background:var(--dsw-alias-fill-hover)}.Zvn6Za_option input{accent-color:var(--dsw-alias-button-primary-fill);margin:0}.Zvn6Za_badge{color:var(--dsw-alias-label-quaternary);font-size:var(--dsw-font-size-xs);margin-left:auto}.Zvn6Za_error{color:var(--dsw-alias-state-error-label);font-size:var(--dsw-font-size-sm);margin-top:12px}";
+		//#region \0dsh-css:/Users/winter/dsh-creative/plugins/dsh-project-default-mode/packages/winterhuan/project-default-mode/src/client/dialog.module.css.mjs
+		const css = ".El9Exa_hint{color:var(--dsw-alias-label-tertiary);font-size:var(--dsw-font-size-sm);margin:0 0 12px;line-height:1.5}.El9Exa_status{color:var(--dsw-alias-label-tertiary);font-size:var(--dsw-font-size-sm);margin:0}.El9Exa_options{border:none;flex-direction:column;gap:4px;margin:0;padding:0;display:flex}.El9Exa_option{border-radius:var(--dsw-radius-md);color:var(--dsw-alias-label-primary);font-size:var(--dsw-font-size-sm);cursor:pointer;align-items:center;gap:8px;padding:8px 10px;display:flex}.El9Exa_option:hover{background:var(--dsw-alias-fill-hover)}.El9Exa_option input{accent-color:var(--dsw-alias-button-primary-fill);margin:0}.El9Exa_badge{color:var(--dsw-alias-label-quaternary);font-size:var(--dsw-font-size-xs);margin-left:auto}.El9Exa_error{color:var(--dsw-alias-state-error-label);font-size:var(--dsw-font-size-sm);margin-top:12px}";
 		const tagId = "@winterhuan/dsh-project-default-mode/dialog.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId) + "]") === null) {
 			const tag = document.createElement("style");
@@ -205,12 +205,12 @@ window.__ModuleLoader__.load({
 			document.head.appendChild(tag);
 		}
 		var dialog_module_css_default = {
-			"badge": "Zvn6Za_badge",
-			"error": "Zvn6Za_error",
-			"hint": "Zvn6Za_hint",
-			"option": "Zvn6Za_option",
-			"options": "Zvn6Za_options",
-			"status": "Zvn6Za_status"
+			"badge": "El9Exa_badge",
+			"error": "El9Exa_error",
+			"hint": "El9Exa_hint",
+			"option": "El9Exa_option",
+			"options": "El9Exa_options",
+			"status": "El9Exa_status"
 		};
 		//#endregion
 		//#region lib/types/client/ProjectDefault.js
