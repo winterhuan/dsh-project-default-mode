@@ -25,10 +25,10 @@ DSH resolves one global default agent mode (preset) for a new session. This opti
 <a id="use-this-package"></a>
 ## Use this package
 
-Install the prebuilt release through the [plugin market](https://winterhuan.github.io/dsh-creative/index.json), or use this pinned Git source with DSH `0.2.2-rc.1`:
+Install the prebuilt release through the [plugin market](https://winterhuan.github.io/dsh-creative/index.json), or use this pinned Git source with DSH `0.2.2-rc.5`:
 
 ```sh
-dsh plugin --profile market add 'git+https://github.com/winterhuan/dsh-project-default-mode.git#v0.1.9&path:/packages/winterhuan/project-default-mode'
+dsh plugin --profile market add 'git+https://github.com/winterhuan/dsh-project-default-mode.git#v0.1.10&path:/packages/winterhuan/project-default-mode'
 ```
 
 Replace `market` with the name of your existing DSH profile.
@@ -81,7 +81,7 @@ Tests cover which creations adopt a project default, failure containment, rule r
 
 - [Repository build and browser verification](https://github.com/winterhuan/dsh-creative/blob/upstream-conventions/HANDOFF.md)
 - [Per-project default mode subsystem](https://github.com/winterhuan/dsh-creative/blob/upstream-conventions/docs/subsystems/project-default-mode.md)
-- [Agent preset registry](https://github.com/deepseek-ai/deepseek-harness/blob/dsh-v0.2.2-rc.1/packages/preset/agent-preset-registry/README.md)
+- [Agent preset registry](https://github.com/deepseek-ai/deepseek-harness/blob/dsh-v0.2.2-rc.5/packages/preset/agent-preset-registry/README.md)
 
 -----
 

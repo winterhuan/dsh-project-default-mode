@@ -3,5 +3,5 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write README.md
 /winterhuan-dsh-project-default-mode:
-  en: f400f9093120e15c
-  zh: 6b974a371430d9c0
+  en: cf85798e16bd6e7c
+  zh: d616866956f05963

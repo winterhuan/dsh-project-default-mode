@@ -25,10 +25,10 @@ DSH 只为新会话解析一个全局默认 Agent 模式（preset）。本可选
 <a id="use-this-package"></a>
 ## 使用本包
 
-通过[插件市场](https://winterhuan.github.io/dsh-creative/index.json)安装预构建版本，或在 DSH `0.2.2-rc.1` 中安装以下固定 Git 提交：
+通过[插件市场](https://winterhuan.github.io/dsh-creative/index.json)安装预构建版本，或在 DSH `0.2.2-rc.5` 中安装以下固定 Git 提交：
 
 ```sh
-dsh plugin --profile market add 'git+https://github.com/winterhuan/dsh-project-default-mode.git#v0.1.9&path:/packages/winterhuan/project-default-mode'
+dsh plugin --profile market add 'git+https://github.com/winterhuan/dsh-project-default-mode.git#v0.1.10&path:/packages/winterhuan/project-default-mode'
 ```
 
 将 `market` 替换为你已有的 DSH profile 名称。
@@ -81,7 +81,7 @@ Host 半边（[src/index.ts](src/index.ts)）声明 volatile 的 `rules` 配置�
 
 - [仓库构建与浏览器验证](https://github.com/winterhuan/dsh-creative/blob/upstream-conventions/HANDOFF.md)
 - [项目默认模式子系统](https://github.com/winterhuan/dsh-creative/blob/upstream-conventions/docs/subsystems/project-default-mode.zh.md)
-- [Agent preset 注册表](https://github.com/deepseek-ai/deepseek-harness/blob/dsh-v0.2.2-rc.1/packages/preset/agent-preset-registry/README.md)
+- [Agent preset 注册表](https://github.com/deepseek-ai/deepseek-harness/blob/dsh-v0.2.2-rc.5/packages/preset/agent-preset-registry/README.md)
 
 -----
 
